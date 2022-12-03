@@ -14,12 +14,12 @@ public static class Day02
         int total = 0;
         foreach (string line in File.ReadLines(path))
         {
-            total += line.Calucate();
+            total += line.BlazinglyFastCalculation();
         }
         return total;
     }
 
-    private static int Calucate(this string input)
+    private static int BlazinglyFastCalculation(this string input)
     {
         if(string.IsNullOrEmpty(input) || input.Length < 3 )
         {
