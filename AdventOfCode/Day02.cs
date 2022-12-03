@@ -2,18 +2,11 @@
 
 public static class Day02
 {
-    /*
-     * Result Matrix
-     *      A       B       C
-     *  X   (1+3)   (1+0)   (1+0)
-     *  Y   (2+6)   (2+3)   (2+0)
-     *  Z   (3+6)   (3+6)   (3+3)
-     */
     static readonly int[,] matrix = new int[,]
     {
-        {4,1,1},
-        {8,5,2},
-        {9,9,6}
+        { 1+3, 2+6, 3+0 },
+        { 1+0, 2+3, 3+6 },
+        { 1+6, 2+0, 3+3 }
     };
 
     public static int CalculateTotalScore(string path)
@@ -21,14 +14,14 @@ public static class Day02
         int total = 0;
         foreach (string line in File.ReadLines(path))
         {
-            total +=  line.Calucate();
+            total += line.Calucate();
         }
         return total;
     }
 
     private static int Calucate(this string input)
     {
-        if(string.IsNullOrEmpty(input) || input.Length < 3)
+        if(string.IsNullOrEmpty(input) || input.Length < 3 )
         {
             return 0;
         }
