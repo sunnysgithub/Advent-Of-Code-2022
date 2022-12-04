@@ -23,11 +23,4 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AdventOfCode\AdventOfCode.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="Files\*.*">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 </Project>
