@@ -2,31 +2,57 @@
 
 public static class Day02
 {
-    static readonly int[,] matrix = new int[,]
+
+    /**
+     * Solution Matrix for part I
+     * ==========================
+     *      Y       X       Z
+     * A    1+3     2+6     3+0
+     * B    1+0     2+3     3+6
+     * C    1+6     2+0     3+3
+     */ 
+    static readonly int[,] matrix01 = new int[,]
     {
         { 1+3, 2+6, 3+0 },
         { 1+0, 2+3, 3+6 },
         { 1+6, 2+0, 3+3 }
     };
 
-    public static int CalculateTotalScore(string path)
+    /**
+     * 
+     * Solution Matrix for part II
+     * ===========================
+     * 
+     *          Lose    Draw    Win
+     * Rock     0+3     3+1     6+2
+     * Paper    0+1     3+2     6+3
+     * Scissors 0+2     3+3     6+1
+     * 
+     */
+
+    static readonly int[,] matrix02 = new int[,]
     {
-        int total = 0;
+        { 0+3, 3+1, 6+2 },
+        { 0+1, 3+2, 6+3 },
+        { 0+2, 3+3, 6+1 }
+    };
+
+    public static (int,int) CalculateTotalScore(string path)
+    {
+        int solution01 = 0, solution02 = 0;
+        int i, j;
+
         foreach (string line in File.ReadLines(path))
         {
-            total += line.BlazinglyFastCalculation();
-        }
-        return total;
-    }
+            if (string.IsNullOrEmpty(line) || line.Length < 3) continue;
+            
+            i = line[0].ToIndex();
+            j = line[2].ToIndex();
 
-    private static int BlazinglyFastCalculation(this string input)
-    {
-        if(string.IsNullOrEmpty(input) || input.Length < 3 )
-        {
-            return 0;
+            solution01 += matrix01[i,j];
+            solution02 += matrix02[i,j];
         }
-
-        return matrix[input[0].ToIndex(), input[2].ToIndex()];
+        return (solution01,solution02);
     }
 
     private static int ToIndex(this char c) => c switch
