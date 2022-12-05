@@ -6,7 +6,7 @@ public class TestDay03
 {
     [Test]
     [TestCase(@"../../../Files/03ExampleInput.txt", 157)]
-    [TestCase(@"../../../Files/03Input.txt", 0)]
+    [TestCase(@"../../../Files/03Input.txt", 7980)]
     public void Test_Day03_Solve(
         string path,
         int result
@@ -28,6 +28,17 @@ public class TestDay03
     public void Test_CompareCompartments()
     {
         Assert.That("ab".CompareCompartments(), Is.EqualTo(0));
+    }
+
+    [Test]
+    [TestCase(@"../../../Files/03ExampleInput.txt", 70)]
+    [TestCase(@"../../../Files/03Input.txt", 0)]
+    public void Test_Day03_SolveSecondPart(
+        string path,
+        int result
+        )
+    {
+        Assert.That(Day03.SolveSecondPart(path), Is.EqualTo(result));
     }
 }
 

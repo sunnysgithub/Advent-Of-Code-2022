@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode;
+﻿using System.Text;
+
+namespace AdventOfCode;
 
 public static class Day03
 {
@@ -49,5 +51,69 @@ public static class Day03
             ? i - 96 // a-z => 1  - 26
             : i - 38;// A-Z => 27 - 52
     }
+
+    public static int SolveSecondPart(string path)
+    {
+        int solution = 0;
+        
+        byte[] arr = new byte[53];
+        char c;
+        
+        int index;
+
+        byte previousLine = 0;
+        byte currentLine = 1;
+
+        using (var fileStream = File.OpenRead(path))
+        {
+            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            {
+                while(!streamReader.EndOfStream)
+                {
+                    c = (char)streamReader.Read();
+
+                    if (c.Equals('\n'))
+                    {
+                        previousLine++;
+                        currentLine++;
+
+                        if(currentLine == 4)
+                        {
+                            // check if there is a solution 
+                            for (int i = 1; i < 53; i++ )
+                            {
+                                if (arr[i] == 3)
+                                {
+                                    solution += i;
+                                    break;
+                                }
+                            }
+
+                            // prepare for new group
+
+                            previousLine = 0;
+                            currentLine = 1;
+                            arr = new byte[53];
+                        }
+                    }
+
+                    index = c.ToPriority();
+
+                    if(index <= 0)
+                    {
+                        continue;
+                    }
+
+                    if(arr[index] == previousLine)
+                    {
+                        arr[index] = currentLine;
+                    }
+                }
+            }
+        }
+
+        return solution;
+    }
+
 }
 
