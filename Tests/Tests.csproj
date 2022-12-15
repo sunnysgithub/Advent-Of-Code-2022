@@ -17,10 +17,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Files\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\AdventOfCode\AdventOfCode.csproj" />
 	</ItemGroup>
 </Project>

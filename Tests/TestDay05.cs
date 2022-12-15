@@ -17,7 +17,7 @@ namespace Tests
 
         [Test]
         [TestCase(@"../../../Files/05ExampleInput.txt", "MCD")]
-        [TestCase(@"../../../Files/05Input.txt", "ABC")]
+        [TestCase(@"../../../Files/05Input.txt", "GNFBSBJLH")]
         public void Test_Day05_Part02(
         string path,
         string result
