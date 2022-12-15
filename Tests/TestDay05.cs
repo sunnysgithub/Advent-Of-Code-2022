@@ -6,7 +6,7 @@ namespace Tests
     {
         [Test]
         [TestCase(@"../../../Files/05ExampleInput.txt", "CMZ")]
-        //[TestCase(@"../../../Files/05Input.txt", "")]
+        [TestCase(@"../../../Files/05Input.txt", "JRVNHHCSJ")]
         public void Test_Day05_Part01(
         string path,
         string result
@@ -17,7 +17,7 @@ namespace Tests
 
         //[Test]
         //[TestCase(@"../../../Files/05ExampleInput.txt", "CMZ")]
-        //[TestCase(@"../../../Files/05Input.txt", "")]
+        //[TestCase(@"../../../Files/05Input.txt", "ABC")]
         //public void Test_Day05_Part02(
         //string path,
         //string result

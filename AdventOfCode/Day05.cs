@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.Linq;
 
 namespace AdventOfCode;
 
@@ -7,6 +7,8 @@ public static class Day05
 
     public static string Part01(string path)
     {
+        string result = "";
+
         using (StreamReader reader = new StreamReader(path))
         {
             string? line;
@@ -14,11 +16,11 @@ public static class Day05
             line = reader.ReadLine() ?? "";
             int numberOfStacks = (line.Length + 1) / 4;
 
-            List<char>[] stacks = new List<char>[numberOfStacks];
+            LinkedList<char>[] stacks = new LinkedList<char>[numberOfStacks];
 
             for(int i = 0; i < numberOfStacks; i++)
             {
-                stacks[i] = new List<char>();
+                stacks[i] = new LinkedList<char>();
             }
 
             do
@@ -27,11 +29,15 @@ public static class Day05
 
                 for(int i = 0; i < numberOfStacks; i++)
                 {
-                    stacks[i].Add(line[(i * 4) + 1]);
+                    char c = line[(i * 4) + 1];
+                    if(char.IsLetter(c))
+                    {
+                        stacks[i].AddFirst(c);
+                    }
                 }
             } while((line = reader.ReadLine()) != null);
 
-            line = reader.ReadLine();// empty line
+            reader.ReadLine();// empty line
 
             string[] splitted;
             int move, from, to;
@@ -39,21 +45,24 @@ public static class Day05
             {
                 splitted = line.Split(' ');
                 move = int.Parse(splitted[1]);
-                from = int.Parse(splitted[3]);
-                to = int.Parse(splitted[5]);
+                from = int.Parse(splitted[3]) - 1;
+                to = int.Parse(splitted[5]) - 1;
 
                 for(int i = 0; i < move; i++)
                 {
-                    stacks[to].AddLast(stacks[from].remo)
+                    stacks[to].AddLast(stacks[from].Last());
+                    stacks[from].RemoveLast();
                 }
                 
             }
-            
 
-            Console.WriteLine("");
+            for (int i = 0; i < numberOfStacks; i++)
+            {
+                result += stacks[i].Last();
+            }
         }
 
-        return "";
+        return result;
     }
 
     public static string Part02(string path)
