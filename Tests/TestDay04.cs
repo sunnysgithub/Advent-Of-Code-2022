@@ -17,7 +17,7 @@ public class TestDay04
     
     [Test]
     [TestCase(@"../../../Files/04ExampleInput.txt", 4)]
-    [TestCase(@"../../../Files/04Input.txt", 0)]
+    [TestCase(@"../../../Files/04Input.txt", 847)]
     public void Test_Day04_SolvePart02(
         string path,
         int result
