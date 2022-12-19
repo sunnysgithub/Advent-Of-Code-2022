@@ -18,15 +18,19 @@ namespace Tests
             Assert.That(Day06.Part01(path), Is.EqualTo(result));
         }
 
-        //[Test]
-        //[TestCase(@"../../../Files/06ExampleInput01.txt", 0)]
-        //[TestCase(@"../../../Files/06Input.txt", 0)]
-        //public void Test_Day06_Part02(
-        //string path,
-        //int result
-        //)
-        //{
-        //    Assert.That(Day06.Part02(path), Is.EqualTo(result));
-        //}
+        [Test]
+        [TestCase(@"../../../Files/06ExampleInput05.txt", 19)]
+        [TestCase(@"../../../Files/06ExampleInput06.txt", 23)]
+        [TestCase(@"../../../Files/06ExampleInput07.txt", 23)]
+        [TestCase(@"../../../Files/06ExampleInput08.txt", 29)]
+        [TestCase(@"../../../Files/06ExampleInput09.txt", 26)]
+        [TestCase(@"../../../Files/06Input.txt", 0)]
+        public void Test_Day06_Part02(
+        string path,
+        int result
+        )
+        {
+            Assert.That(Day06.Part02(path), Is.EqualTo(result));
+        }
     }
 }
