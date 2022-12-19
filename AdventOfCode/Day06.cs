@@ -4,43 +4,48 @@
     {
         public static int Part01(string path)
         {
-            int marker = 0;
+            int marker = 1;
 
-            char i = char.MinValue, j = char.MinValue, k = char.MinValue, l = char.MinValue;
+            char i, j = ' ', k = ' ', l = ' ';
 
             using (StreamReader sr = new StreamReader(path))
             {
+                l = (char)sr.Read();
+
                 while (sr.Peek() >= 0)
                 {
                     char c = (char)sr.Read();
 
-                    if (c == i)
-                    {
-                        i = j; j = k; k = c; l = char.MinValue;
-                        marker++;
-                        continue;
-                    }
-
                     if (c == j)
                     {
-                        i = k; j = c; k = char.MinValue; l = char.MinValue;
-                        marker += 2;
-                        continue;
+                        i = ' ';
+                        j = k;
+                        k = l;
+                        l = c;
+                    }
+                    else if(c == k)
+                    {
+                        i = ' ';
+                        j = ' ';
+                        k = l;
+                        l = c;
+                    }
+                    else if(c == l)
+                    {
+                        i = ' ';
+                        j = ' ';
+                        k = ' ';
+                        l = c;
+                    }
+                    else
+                    {
+                        i = j; j = k; k = l; l = c;
                     }
 
-                    if (c == k)
-                    {
-                        i = c; j = char.MinValue; k = char.MinValue; l = char.MinValue;
-                        marker += 3;
-                        continue;
-                    } 
+                    marker++;
 
-                    if (i != char.MinValue && j != char.MinValue && k != char.MinValue && l != char.MinValue)
-                    {
-                        break;
-                    }
+                    if (i != ' ') break;
 
-                    i = j; j = k; k = l; l = c;
                 }
             }
 
